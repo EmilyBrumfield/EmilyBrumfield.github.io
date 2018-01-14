@@ -1,2 +1,1 @@
-<p>Content in the future.</p>
-Testing
+Actual content coming soon.
