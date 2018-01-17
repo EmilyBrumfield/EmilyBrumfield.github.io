@@ -1,3 +1,17 @@
+//service worker registration if browser supports it
+//an actual service worker might be overkill for an app this simple, but it's good to get practice
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+  .then(function(registration) {
+    console.log('Registration successful, scope is:', registration.scope);
+  })
+  .catch(function(error) {
+    console.log('Service worker registration failed, error:', error);
+  });
+}
+
+
 //NOTE: Use toggle buttons for min and max; check to see what numbers of possible for those limits in the core game
 //Don't include extra limits; we're going for light over power
 
