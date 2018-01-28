@@ -1,5 +1,13 @@
-//NOTE: Use toggle buttons for min and max; check to see what numbers of possible for those limits in the core game
-//Don't include extra limits; we're going for light over power
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/serviceWorker.js')
+  .then(function(reg) {
+    // registration worked
+    console.log('Registration succeeded. Scope is ' + reg.scope);
+  }).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+  });
+}
 
 /*D6 DICE ROLLER
 Progressiva web app that rolls D6 system dice without hassle or unnecessary clicks.
