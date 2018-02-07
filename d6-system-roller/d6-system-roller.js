@@ -1,3 +1,6 @@
+//need to fix default-src error
+
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/serviceWorker.js')
   .then(function(reg) {
