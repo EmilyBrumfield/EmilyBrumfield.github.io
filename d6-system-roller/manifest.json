@@ -1,0 +1,14 @@
+{
+    "short_name" : "d6 Roller",
+    "name" : "d6 System Dice Roller",
+    "display" : "standalone",
+    "start_url" : "d6-system-roller.html?launcher=true",
+    "theme_color" : "C0D890",
+
+    "icons" : [
+        {
+            "src" : "genericIcon.ico",
+            "sizes" : "48x48"
+        }
+    ]
+}
