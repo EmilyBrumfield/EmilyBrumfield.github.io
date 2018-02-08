@@ -17,11 +17,12 @@
 
 // Incrementing CACHE_VERSION will kick off the install event and force previously cached
 // resources to be cached again.
-const CACHE_VERSION = 4;
+const CACHE_VERSION = 5;
 let CURRENT_CACHES = {
   offline: 'offline-v' + CACHE_VERSION
 };
-const OFFLINE_URL = 'offline.html';
+
+const OFFLINE_URLS = ['d6-system-roller-offline.html', 'd6-system-roller-offline.css', 'd6-system-roller-offline.js']
 
 function createCacheBustedRequest(url) {
   let request = new Request(url, {cache: 'reload'});
@@ -44,7 +45,7 @@ self.addEventListener('install', event => {
     // the actual URL we end up requesting might include a cache-busting parameter.
     fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
       return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.put(OFFLINE_URL, response);
+        return cache.addAll(OFFLINE_URLS);
       });
     })
   );
@@ -92,7 +93,7 @@ self.addEventListener('fetch', event => {
         // range, the catch() will NOT be called. If you need custom handling for 4xx or 5xx
         // errors, see https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker/fallback-response
         console.log('Fetch failed; returning offline page instead.', error);
-        return caches.match(OFFLINE_URL);
+        return caches.match(OFFLINE_URLS);
       })
     );
   }
