@@ -1,5 +1,3 @@
-//Using a Google sample serviceWorker for now.
-
 /*
  Copyright 2015 Google Inc. All Rights Reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +15,11 @@
 
 // Incrementing CACHE_VERSION will kick off the install event and force previously cached
 // resources to be cached again.
-const CACHE_VERSION = 6;
+const CACHE_VERSION = 10;
 let CURRENT_CACHES = {
   offline: 'offline-v' + CACHE_VERSION
 };
-
-const OFFLINE_URLS = ['d6-system-roller-offline.html', 'd6-system-roller-offline.css', 'd6-system-roller-offline.js']
+const OFFLINE_URL = 'offline.html';
 
 function createCacheBustedRequest(url) {
   let request = new Request(url, {cache: 'reload'});
@@ -43,9 +40,9 @@ self.addEventListener('install', event => {
   event.waitUntil(
     // We can't use cache.add() here, since we want OFFLINE_URL to be the cache key, but
     // the actual URL we end up requesting might include a cache-busting parameter.
-    fetch(createCacheBustedRequest(OFFLINE_URLS)).then(function(response) {
+    fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
       return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.addAll(OFFLINE_URLS);
+        return cache.put(OFFLINE_URL, response);
       });
     })
   );
@@ -93,7 +90,7 @@ self.addEventListener('fetch', event => {
         // range, the catch() will NOT be called. If you need custom handling for 4xx or 5xx
         // errors, see https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker/fallback-response
         console.log('Fetch failed; returning offline page instead.', error);
-        return caches.match(OFFLINE_URLS);
+        return caches.match(OFFLINE_URL);
       })
     );
   }
