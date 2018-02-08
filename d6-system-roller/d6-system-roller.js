@@ -2,7 +2,7 @@
 
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./d6-system-roller/serviceWorker.js', {scope: './d6-system-roller/'})
+  navigator.serviceWorker.register('../d6-system-roller/serviceWorker.js', {scope: '../d6-system-roller/'})
   .then(function(reg) {
     // registration worked
     console.log('Registration succeeded. Scope is ' + reg.scope);
