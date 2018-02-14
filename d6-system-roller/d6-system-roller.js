@@ -1,5 +1,4 @@
-//need to fix default-src error
-
+const FULL_INSTRUCTIONS = "Dice roller for the d6 System.<br /><b>Instructions:</b> Click the button with the number of dice to roll. <br /><b>House Rule:</b> The wild die is separate from the normal die pool and doesn't add to the total."
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('../d6-system-roller/serviceWorker.js', {scope: '../d6-system-roller/'})
@@ -26,6 +25,18 @@ The wild die doesn't contribute to successes; it's a six-sided die that causes a
 
 var diceCap = 6; //stores the current dice cap
 
+
+function handleInstructionClick() {  //toggles instructions
+  
+  if (document.getElementById("instructions").innerHTML == "") {
+    outputReplace("instructions", FULL_INSTRUCTIONS);
+  }
+  else {
+    outputReplace("instructions", "");
+  }
+  
+  
+}
 
 function handleDiceCapClick(newCap) {
   diceCap = newCap;
