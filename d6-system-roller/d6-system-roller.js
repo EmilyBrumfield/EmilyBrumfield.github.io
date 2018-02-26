@@ -1,3 +1,13 @@
+if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('serviceWorker.js')
+        .then(function(registration) {
+          console.log('Registered:', registration);
+        })
+        .catch(function(error) {
+          console.log('Registration failed: ', error);
+        });
+}
+
 const FULL_INSTRUCTIONS = "Dice roller for the d6 System.<br /><b>Instructions:</b> Click the button with the number of dice to roll. <br /><b>House Rule:</b> The wild die is separate from the normal die pool and doesn't add to the total."
 
 /*D6 DICE ROLLER
