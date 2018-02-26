@@ -3,7 +3,7 @@ var version = 'v1';
 self.addEventListener("install", function(event) {
     console.log('WORKER: install event in progress.');
     event.waitUntil(
-      /* The caches built-in is a promise-based API that helps you cache responses,
+      /* The caches built-in is a promised-based API that helps you cache responses,
          as well as finding and deleting them.
       */
       caches
