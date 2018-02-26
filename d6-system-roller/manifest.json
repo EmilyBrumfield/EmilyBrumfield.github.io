@@ -4,6 +4,7 @@
     "display" : "standalone",
     "start_url" : "https://emilybrumfield.github.io/d6-system-roller/d6-system-roller.html",
     "theme_color" : "#C0D890",
+    "background_color": "#2196F3",
 
     "icons" : [
         {
