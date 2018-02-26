@@ -1,0 +1,14 @@
+{
+    "short_name" : "Em Misc",
+    "name" : "Emily's Miscellanea",
+    "display" : "standalone",
+    "start_url" : "./index.md",
+    "theme_color" : "#C0D890",
+
+    "icons" : [
+        {
+            "src" : "genericIcon.ico",
+            "sizes" : "192x192"
+        }
+    ]
+}
