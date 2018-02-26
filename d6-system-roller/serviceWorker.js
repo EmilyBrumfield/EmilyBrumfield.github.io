@@ -15,11 +15,13 @@
 
 // Incrementing CACHE_VERSION will kick off the install event and force previously cached
 // resources to be cached again.
-const CACHE_VERSION = 10.1;
+const CACHE_VERSION = 11;
 let CURRENT_CACHES = {
   offline: 'offline-v' + CACHE_VERSION
 };
 const OFFLINE_URL = 'offline.html';
+const OFFLINE_CSS = 'offline.css';
+const OFFLINE_JS = 'offline.js';
 
 function createCacheBustedRequest(url) {
   let request = new Request(url, {cache: 'reload'});
@@ -36,13 +38,27 @@ function createCacheBustedRequest(url) {
   return new Request(bustedUrl);
 }
 
-self.addEventListener('install', event => {
+/*self.addEventListener('install', event => {
   event.waitUntil(
     // We can't use cache.add() here, since we want OFFLINE_URL to be the cache key, but
     // the actual URL we end up requesting might include a cache-busting parameter.
     fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
       return caches.open(CURRENT_CACHES.offline).then(function(cache) {
         return cache.put(OFFLINE_URL, response);
+      });
+    })
+  );
+}); ORIGINAL VERSION; uses return*/
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    // We can't use cache.add() here, since we want OFFLINE_URL to be the cache key, but
+    // the actual URL we end up requesting might include a cache-busting parameter.
+    fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
+      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
+        cache.put(OFFLINE_URL, response);
+        cache.put(OFFLINE_CSS, response);
+        cache.put(OFFLINE_JS, response);
       });
     })
   );

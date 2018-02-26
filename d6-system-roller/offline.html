@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" type="text/css" href="offline.css">
+    <link rel="manifest" href="manifest.json">    
+    <script type="text/javascript" src="offline.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta charset="utf-8">
+    <meta name="theme-color" content="#C0D890">
     <title>D6 Roller</title>
   </head>
   <body>
@@ -10,13 +14,10 @@
       You need to enable JavaScript to run this app.
     </noscript>
     
-    <h1>Offline Mode</h1>
-    <p class="App-explanation">
-      Dice roller for the d6 System.
-      
-      <br /><b>Instructions:</b> Click the button with the number of dice to roll. 
-      <br /><b>House Rule:</b> The wild die is separate from the normal die pool and doesn't add to the total.
-      </p>
+
+    <h1 id="Bob">THIS IS A TEST OF THE EMERGENCY OFFLINE SYSTEM.</h1>
+    <button class="App-explanation-button" onClick="handleInstructionClick()">Instructions</button>
+    <p class="App-explanation" id="instructions"></p>
 
       <h1 id="rollTotal">Total Roll:</h1>
       <h1 id="wildDie">Wild Die Result:</h1>
