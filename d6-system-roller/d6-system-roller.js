@@ -1,3 +1,15 @@
+// ServiceWorker is a progressive technology. Ignore unsupported browsers
+if ('serviceWorker' in navigator) {
+  console.log('CLIENT: service worker registration in progress.');
+  navigator.serviceWorker.register('/service-worker.js').then(function() {
+    console.log('CLIENT: service worker registration complete.');
+  }, function() {
+    console.log('CLIENT: service worker registration failure.');
+  });
+} else {
+  console.log('CLIENT: service worker is not supported.');
+}
+
 const FULL_INSTRUCTIONS = "Dice roller for the d6 System.<br /><b>Instructions:</b> Click the button with the number of dice to roll. <br /><b>House Rule:</b> The wild die is separate from the normal die pool and doesn't add to the total."
 
 /*D6 DICE ROLLER
