@@ -15,7 +15,7 @@
 
 // Incrementing CACHE_VERSION will kick off the install event and force previously cached
 // resources to be cached again.
-const CACHE_VERSION = 11;
+const CACHE_VERSION = 12;
 let CURRENT_CACHES = {
   offline: 'offline-v' + CACHE_VERSION
 };
@@ -56,13 +56,28 @@ self.addEventListener('install', event => {
     // the actual URL we end up requesting might include a cache-busting parameter.
     fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
       return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        cache.put(OFFLINE_URL, response);
-        cache.put(OFFLINE_CSS, response);
-        cache.put(OFFLINE_JS, response);
+        return cache.put(OFFLINE_URL, response);
+      });
+    })
+  );
+  event.waitUntil(
+    // Something I'm trying out.
+    fetch(createCacheBustedRequest(OFFLINE_CSS)).then(function(response) {
+      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
+        return cache.put(OFFLINE_CSS, response);
+      });
+    })
+  );
+  event.waitUntil(
+    // Something I'm trying out.
+    fetch(createCacheBustedRequest(OFFLINE_JS)).then(function(response) {
+      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
+        return cache.put(OFFLINE_JS, response);
       });
     })
   );
 });
+
 
 self.addEventListener('activate', event => {
   // Delete all caches that aren't named in CURRENT_CACHES.
