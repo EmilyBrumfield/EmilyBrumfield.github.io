@@ -1,5 +1,6 @@
 const FULL_INSTRUCTIONS = "Dice roller for the d6 System.<br /><b>Instructions:</b> Click the button with the number of dice to roll. <br /><b>House Rule:</b> The wild die is separate from the normal die pool and doesn't add to the total."
 
+/*
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('../d6-system-roller/serviceWorker.js', {scope: '../d6-system-roller/'})
   .then(function(reg) {
@@ -10,6 +11,7 @@ if ('serviceWorker' in navigator) {
     console.log('Registration failed with ' + error);
   });
 }
+*/
 
 /*D6 DICE ROLLER
 Progressiva web app that rolls D6 system dice without hassle or unnecessary clicks.
