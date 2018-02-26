@@ -15,10 +15,10 @@
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('offline-v3').then(function(cache) {
+    caches.open('offline-v4').then(function(cache) {
       return cache.addAll([
-        '/offline.css',
-        '/offline.js',
+        '/d6-system-roller.css',
+        '/d6-system-roller.js',
         '/offline.html'
       ]);
     })
@@ -43,7 +43,7 @@ self.addEventListener('fetch', event => {
         // range, the catch() will NOT be called. If you need custom handling for 4xx or 5xx
         // errors, see https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker/fallback-response
         console.log('Fetch failed; returning offline page instead.', error);
-        return caches.match('offline-v3');
+        return caches.match('offline-v4');
       })
     );
   }
