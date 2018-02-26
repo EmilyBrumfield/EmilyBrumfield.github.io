@@ -13,92 +13,14 @@
 
 'use strict';
 
-// Incrementing CACHE_VERSION will kick off the install event and force previously cached
-// resources to be cached again.
-const CACHE_VERSION = 12;
-let CURRENT_CACHES = {
-  offline: 'offline-v' + CACHE_VERSION
-};
-const OFFLINE_URL = 'offline.html';
-const OFFLINE_CSS = 'offline.css';
-const OFFLINE_JS = 'offline.js';
-
-function createCacheBustedRequest(url) {
-  let request = new Request(url, {cache: 'reload'});
-  // See https://fetch.spec.whatwg.org/#concept-request-mode
-  // This is not yet supported in Chrome as of M48, so we need to explicitly check to see
-  // if the cache: 'reload' option had any effect.
-  if ('cache' in request) {
-    return request;
-  }
-
-  // If {cache: 'reload'} didn't have any effect, append a cache-busting URL parameter instead.
-  let bustedUrl = new URL(url, self.location.href);
-  bustedUrl.search += (bustedUrl.search ? '&' : '') + 'cachebust=' + Date.now();
-  return new Request(bustedUrl);
-}
-
-/*self.addEventListener('install', event => {
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    // We can't use cache.add() here, since we want OFFLINE_URL to be the cache key, but
-    // the actual URL we end up requesting might include a cache-busting parameter.
-    fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
-      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.put(OFFLINE_URL, response);
-      });
-    })
-  );
-}); ORIGINAL VERSION; uses return*/
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    // We can't use cache.add() here, since we want OFFLINE_URL to be the cache key, but
-    // the actual URL we end up requesting might include a cache-busting parameter.
-    fetch(createCacheBustedRequest(OFFLINE_URL)).then(function(response) {
-      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.put(OFFLINE_URL, response);
-      });
-    })
-  );
-  event.waitUntil(
-    // Something I'm trying out.
-    fetch(createCacheBustedRequest(OFFLINE_CSS)).then(function(response) {
-      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.put(OFFLINE_CSS, response);
-      });
-    })
-  );
-  event.waitUntil(
-    // Something I'm trying out.
-    fetch(createCacheBustedRequest(OFFLINE_JS)).then(function(response) {
-      return caches.open(CURRENT_CACHES.offline).then(function(cache) {
-        return cache.put(OFFLINE_JS, response);
-      });
-    })
-  );
-});
-
-
-self.addEventListener('activate', event => {
-  // Delete all caches that aren't named in CURRENT_CACHES.
-  // While there is only one cache in this example, the same logic will handle the case where
-  // there are multiple versioned caches.
-  let expectedCacheNames = Object.keys(CURRENT_CACHES).map(function(key) {
-    return CURRENT_CACHES[key];
-  });
-
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (expectedCacheNames.indexOf(cacheName) === -1) {
-            // If this cache name isn't present in the array of "expected" cache names,
-            // then delete it.
-            console.log('Deleting out of date cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
+    caches.open('offline-v2').then(function(cache) {
+      return cache.addAll([
+        '/offline.css',
+        '/offline.js',
+        '/offline.html',
+      ]);
     })
   );
 });
@@ -121,7 +43,7 @@ self.addEventListener('fetch', event => {
         // range, the catch() will NOT be called. If you need custom handling for 4xx or 5xx
         // errors, see https://github.com/GoogleChrome/samples/tree/gh-pages/service-worker/fallback-response
         console.log('Fetch failed; returning offline page instead.', error);
-        return caches.match(OFFLINE_URL);
+        return caches.match('offline-v2');
       })
     );
   }
