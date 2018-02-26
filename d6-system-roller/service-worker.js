@@ -19,8 +19,9 @@ self.addEventListener("install", function(event) {
           */
           return cache.addAll([
             '/',
-            '/d6-system-roller.css',
-            '/d6-system-roller.js'
+            'd6-system-roller.css',
+            'd6-system-roller.js',
+            'd6-system-roller.html'
           ]);
         })
         .then(function() {
