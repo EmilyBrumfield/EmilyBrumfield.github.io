@@ -2,9 +2,14 @@ var CACHE_NAME = 'static-cache';
 
 var urlsToCache = [
   '.',
-  'd6-system-roller.html',
-  'd6-system-roller.js',
-  'd6-system-roller.css',
+  '/d6-system-roller/.',
+  '/d6-system-roller/d6-system-roller.html',
+  '/d6-system-roller/d6-system-roller.js',
+  '/d6-system-roller/d6-system-roller.css',
+  '/anarchy-roller/.',
+  '/anarchy-roller/anarchy-roller.html',
+  '/anarchy-roller/anarchy-roller.js',
+  '/anarchy-roller/anarchy-roller.css',
 ];
 
 self.addEventListener('install', function(event) {
