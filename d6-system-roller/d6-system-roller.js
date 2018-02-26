@@ -1,16 +1,4 @@
-//need to fix default-src error
-
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('../d6-system-roller/serviceWorker.js', {scope: '../d6-system-roller/'})
-  .then(function(reg) {
-    // registration worked
-    console.log('Registration succeeded. Scope is ' + reg.scope);
-  }).catch(function(error) {
-    // registration failed
-    console.log('Registration failed with ' + error);
-  });
-}
+const FULL_INSTRUCTIONS = "Dice roller for the d6 System.<br /><b>Instructions:</b> Click the button with the number of dice to roll. <br /><b>House Rule:</b> The wild die is separate from the normal die pool and doesn't add to the total."
 
 /*D6 DICE ROLLER
 Progressiva web app that rolls D6 system dice without hassle or unnecessary clicks.
@@ -26,6 +14,18 @@ The wild die doesn't contribute to successes; it's a six-sided die that causes a
 
 var diceCap = 6; //stores the current dice cap
 
+
+function handleInstructionClick() {  //toggles instructions
+  
+  if (document.getElementById("instructions").innerHTML == "") {
+    outputReplace("instructions", FULL_INSTRUCTIONS);
+  }
+  else {
+    outputReplace("instructions", "");
+  }
+  
+  
+}
 
 function handleDiceCapClick(newCap) {
   diceCap = newCap;
