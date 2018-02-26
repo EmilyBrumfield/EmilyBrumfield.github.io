@@ -19,7 +19,7 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
         '/offline.css',
         '/offline.js',
-        '/offline.html',
+        '/offline.html'
       ]);
     })
   );
