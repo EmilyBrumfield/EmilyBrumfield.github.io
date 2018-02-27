@@ -11,5 +11,9 @@
             "src" : "genericIcon.ico",
             "sizes" : "192x192"
         }
+        {
+            "src" : "placeholderIcon.ico",
+            "sizes" : "512x512"
+        }
     ]
 }
