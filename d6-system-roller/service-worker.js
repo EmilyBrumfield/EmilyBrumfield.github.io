@@ -141,6 +141,5 @@ self.addEventListener("fetch", function(event) {  //this is where the cached fil
               })
           );
         })
-        )
-    );
+        );
   });
