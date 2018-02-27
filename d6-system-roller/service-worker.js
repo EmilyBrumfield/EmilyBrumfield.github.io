@@ -2,41 +2,27 @@
 //https://css-tricks.com/serviceworker-for-offline/
 //It's a placeholder to keep things working properly while I see what's wrong with my own serviceWorker code.
 
-var version = 'v1::';
+var version = 'v1';
 
-self.addEventListener("install", function(event) {
-    console.log('WORKER: install event in progress.');
-    event.waitUntil(
-      /* The caches built-in is a promised-based API that helps you cache responses,
-         as well as finding and deleting them.
-      */
-      caches
-        /* You can open a cache by name, and this method returns a promise. We use
-           a versioned cache name here so that we can remove old cache entries in
-           one fell swoop later, when phasing out an older service worker.
-        */
-        .open(version + 'fundamentals')
-        .then(function(cache) {
-          /* After the cache is opened, we can fill it with the offline fundamentals.
-             The method below will add all resources we've indicated to the cache,
-             after making HTTP requests for each of them.
-          */
-          return cache.addAll([
-            '/',
+self.addEventListener("install", function(event) {  //this portion shouldn't delete anything from cache since it might be in use
+    
+    event.waitUntil(caches.open("necessaryFiles" + version).then(function(cache) {return cache.addAll([ //opens latest necessaryFiles cache
+            '/', //and adds these four files to it if it opened successfully
             'd6-system-roller.css',
             'd6-system-roller.js',
             'd6-system-roller.html'
           ]);
-        })
-        .then(function() {
-          console.log('WORKER: install completed');
+        }).then(function() {console.log('service worker: added' + necessaryFiles + version + ' files to cache'); //and logs to console if it worked
+          //includes version number in console notification for convenience
         })
     );
   });
 
-  self.addEventListener("fetch", function(event) {
-    console.log('WORKER: fetch event in progress.');
-  
+self.addEventListener("fetch", function(event) {  //this is where the cached files can actually be used if necessary
+    //borrowed some of this code and the notes from Nicolas Bevacqua; pretty useful stuff, so I'm not going to mess with it much
+    //https://css-tricks.com/serviceworker-for-offline/
+
+     
     /* We should only cache GET requests, and deal with the rest of method in the
        client-side, by handling failed POST,PUT,PATCH,etc. requests.
     */
@@ -141,6 +127,9 @@ self.addEventListener("install", function(event) {
     /* Just like with the install event, event.waitUntil blocks activate on a promise.
        Activation will fail unless the promise is fulfilled.
     */
+    //a;sp borrowed this from Nicolas Bevacqua, but switched the version number to the end of the cache name instead of beginning
+    //https://css-tricks.com/serviceworker-for-offline/
+
     console.log('WORKER: activate event in progress.');
   
     event.waitUntil(
@@ -155,7 +144,7 @@ self.addEventListener("install", function(event) {
             keys
               .filter(function (key) {
                 // Filter by keys that don't start with the latest version prefix.
-                return !key.startsWith(version);
+                return !key.endsWith(version);
               })
               .map(function (key) {
                 /* Return a promise that's fulfilled
