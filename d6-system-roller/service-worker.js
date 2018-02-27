@@ -2,18 +2,16 @@
 //https://css-tricks.com/serviceworker-for-offline/
 //It's a placeholder to keep things working properly while I see what's wrong with my own serviceWorker code.
 
-var version = 'v1';
+var version = 'v2';
 
 self.addEventListener("install", function(event) {  //this portion shouldn't delete anything from cache since it might be in use
     
-    event.waitUntil(caches.open("necessaryFiles" + version).then(function(cache) {return cache.addAll([ //opens latest necessaryFiles cache
-            '/', //and adds these four files to it if it opened successfully
+    event.waitUntil(caches.open("necessaryFiles" + version).then(function(cache){return cache.addAll([
+            '/',
             'd6-system-roller.css',
             'd6-system-roller.js',
             'd6-system-roller.html'
           ]);
-        }).then(function() {console.log('service worker: added' + necessaryFiles + version + ' files to cache'); //and logs to console if it worked
-          //includes version number in console notification for convenience
         })
     );
   });
@@ -127,23 +125,12 @@ self.addEventListener("fetch", function(event) {  //this is where the cached fil
     /* Just like with the install event, event.waitUntil blocks activate on a promise.
        Activation will fail unless the promise is fulfilled.
     */
-    //a;sp borrowed this from Nicolas Bevacqua, but switched the version number to the end of the cache name instead of beginning
+    //Also borrowed this from Nicolas Bevacqua, but switched the version number to the end of the cache name instead of beginning
     //https://css-tricks.com/serviceworker-for-offline/
 
-    console.log('WORKER: activate event in progress.');
   
-    event.waitUntil(
-      caches
-        /* This method returns a promise which will resolve to an array of available
-           cache keys.
-        */
-        .keys()
-        .then(function (keys) {
-          // We return a promise that settles when all outdated caches are deleted.
-          return Promise.all(
-            keys
-              .filter(function (key) {
-                // Filter by keys that don't start with the latest version prefix.
+    event.waitUntil(caches.keys().then(function (keys) {
+          return Promise.all(keys.filter(function (key) {
                 return !key.endsWith(version);
               })
               .map(function (key) {
@@ -154,8 +141,6 @@ self.addEventListener("fetch", function(event) {  //this is where the cached fil
               })
           );
         })
-        .then(function() {
-          console.log('WORKER: activate completed.');
-        })
+        )
     );
   });
