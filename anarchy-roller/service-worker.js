@@ -8,9 +8,9 @@ self.addEventListener("install", function(event) {  //this portion shouldn't del
     
     event.waitUntil(caches.open("necessaryFiles" + version).then(function(cache){return cache.addAll([
             '/',
-            'd6-system-roller.css',
-            'd6-system-roller.js',
-            'd6-system-roller.html'
+            'anarchy-roller.css',
+            'anarchy-roller.js',
+            'anarchy-roller.html'
           ]);
         })
     );
