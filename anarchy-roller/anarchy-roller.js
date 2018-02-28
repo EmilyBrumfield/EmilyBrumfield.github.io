@@ -13,7 +13,23 @@ It isn't used for all rolls, but I found it was much more user-friendly to just 
 separate setting for whether or not the player wants to roll it with any given roll.
 */
 
-var diceTally = 0; //will eventually use closures for this
+const FULL_INSTRUCTIONS = "Dice roller for Shadowrun Anarchy.<br /><b>Instructions:</b> Click the button with the number of dice to roll.\
+<br /><b>Glitch Die</b> For ease of use, the app always always rolls a glitch die rather than using a clumsy toggle. Ignore the glitch die on any roll where it wouldn't apply.\
+<br /><b>With Edge</b> With Edge shows you the number of successes if you spent Edge ahead of time and count 4's as successes. Otherwise, use the Without Edge result.";
+
+var diceTally = 0;
+
+function handleInstructionClick() {  //toggles instructions
+  
+  if (document.getElementById("instructions").innerHTML == "") {
+    outputReplace("instructions", FULL_INSTRUCTIONS);
+  }
+  else {
+    outputReplace("instructions", "");
+  }
+  
+  
+}
 
 function handleRollClick(numDice) {
     diceTally = rollDice(numDice);

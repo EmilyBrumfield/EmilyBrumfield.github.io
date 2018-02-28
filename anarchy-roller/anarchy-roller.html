@@ -12,11 +12,9 @@
       You need to enable JavaScript to run this app.
     </noscript>
     
-    <p class="App-explanation">
-      Dice roller for Shadowrun Anarchy.
-      <br /><b>Instructions:</b> Click the button with the number of dice to roll. 
-      </p>
-
+    <button class="App-explanation-button" onClick="handleInstructionClick()">Instructions</button>
+    <p class="App-explanation" id="instructions"></p>
+    
       <h1 id="success">Successes:</h1>
       <h1 id="successEdge">Successes with Edge:</h1>
       <h1 id="glitch">Glitch Die Result:</h1>
