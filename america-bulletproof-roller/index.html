@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="manifest" href="manifest.json">    
+    <script type="text/javascript" src="index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#C0D890">
+    <title>America the Bulletproof - Dice Roller</title>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.<br />
+    </noscript>
+         
+      <div class="DiceRoller__div">
+        <button id="absurd0" class="DiceRoller__button DiceRoller__button--clear" onClick='handleDiceClick(0, "absurd")'></button>
+        <button id="absurd1" class="DiceRoller__button DiceRoller__button--absurd" onClick='handleDiceClick(1, "absurd")'></button>
+        <button id="absurd2" class="DiceRoller__button DiceRoller__button--absurd" onClick='handleDiceClick(2, "absurd")'></button>
+        <button id="absurd3" class="DiceRoller__button DiceRoller__button--absurd" onClick='handleDiceClick(3, "absurd")'></button>
+        <button id="absurd4" class="DiceRoller__button DiceRoller__button--absurd" onClick='handleDiceClick(4, "absurd")'></button>
+        <button id="absurd5" class="DiceRoller__button DiceRoller__button--absurd" onClick='handleDiceClick(5, "absurd")'></button>
+      </div>
+
+      <div class="DiceRoller__div">
+        <button id="gritty0" class="DiceRoller__button DiceRoller__button--clear" onClick='handleDiceClick(0, "gritty")'></button>
+        <button id="gritty1" class="DiceRoller__button DiceRoller__button--gritty" onClick='handleDiceClick(1, "gritty")'></button>
+        <button id="gritty2" class="DiceRoller__button DiceRoller__button--gritty" onClick='handleDiceClick(2, "gritty")'></button>
+        <button id="gritty3" class="DiceRoller__button DiceRoller__button--gritty" onClick='handleDiceClick(3, "gritty")'></button>
+        <button id="gritty4" class="DiceRoller__button DiceRoller__button--gritty" onClick='handleDiceClick(4, "gritty")'></button>
+        <button id="gritty5" class="DiceRoller__button DiceRoller__button--gritty" onClick='handleDiceClick(5, "gritty")'></button>
+      </div>
+
+      <br />
+
+      <div class="DiceRoller__div">
+        <button id="advantage0" class="DiceRoller__button DiceRoller__button--clear" onClick='handleDiceClick(0, "advantage")'></button>
+        <button id="advantage1" class="DiceRoller__button DiceRoller__button--advantage" onClick='handleDiceClick(1, "advantage")'></button>
+        <button id="advantage2" class="DiceRoller__button DiceRoller__button--advantage" onClick='handleDiceClick(2, "advantage")'></button>
+        <button id="advantage3" class="DiceRoller__button DiceRoller__button--advantage" onClick='handleDiceClick(3, "advantage")'></button>
+        <button id="advantage4" class="DiceRoller__button DiceRoller__button--advantage" onClick='handleDiceClick(4, "advantage")'></button>
+        <button id="advantage5" class="DiceRoller__button DiceRoller__button--advantage" onClick='handleDiceClick(5, "advantage")'></button>
+      </div>
+
+      <div class="DiceRoller__div">
+        <button id="danger0" class="DiceRoller__button DiceRoller__button--clear" onClick='handleDiceClick(0, "danger")'></button>
+        <button id="danger1" class="DiceRoller__button DiceRoller__button--danger" onClick='handleDiceClick(1, "danger")'></button>
+        <button id="danger2" class="DiceRoller__button DiceRoller__button--danger" onClick='handleDiceClick(2, "danger")'></button>
+        <button id="danger3" class="DiceRoller__button DiceRoller__button--danger" onClick='handleDiceClick(3, "danger")'></button>
+        <button id="danger4" class="DiceRoller__button DiceRoller__button--danger" onClick='handleDiceClick(4, "danger")'></button>
+        <button id="danger5" class="DiceRoller__button DiceRoller__button--danger" onClick='handleDiceClick(5, "danger")'></button>
+      </div>
+
+      <br />
+
+      <h1 id="Results"></h1>
+
+      <button class="DiceRoller__button DiceRoller__button--big" onClick="rollDicePool()">Roll</button>
+
+  
+  
+  
+  </body>
+</html>

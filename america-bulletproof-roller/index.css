@@ -1,0 +1,113 @@
+html {
+  height: 98%;
+  width: 99%;
+}
+
+
+body {
+  font-family: sans-serif;
+  height: 98%;
+  margin: 0;
+  padding: 0;
+  width: 99%;
+}
+
+.App-explanation {
+  font-size: 2vw;
+  background-color: lightgray;
+  text-align: left;
+}
+
+
+.App-explanation-button {
+  font-size: 2vw;
+  height: 3vw;
+  margin-top: 0.5vw;
+  text-align: center;
+  width: 27vw;
+}
+
+.DiceRoller__div {
+  display: inline;
+  margin-right: 2vw;
+}
+
+.DiceRoller__button {
+  font-size: 2vw;
+  height: 6vw;
+  margin-top: 0.5em;
+  text-align: center;
+  width: 6vw;
+}
+
+.DiceRoller__button--big {
+  height: 6vw;
+  width: 12vw;
+  background-color: white;
+  border: 0.1vw solid black;
+}
+
+.DiceRoller__button--clear {
+  background-color: white;
+  background-image: url(Clear.png);
+  background-size: cover;
+  border: 0.1vw dotted black;
+  /*This is a blank image. But it could be replaced by an icon later.*/
+}
+
+.DiceRoller__button--absurd {
+  background-color: white;
+  background-image: url(Absurd-inactive.png);
+  background-size: cover;
+  border: 0.1vw solid white;
+}
+
+.DiceRoller__button--absurd--active {
+  background-image: url(Absurd.png);
+  background-size: cover;
+  
+}
+
+.DiceRoller__button--gritty {
+  background-color: white;
+  background-image: url(Gritty-inactive.png);
+  background-size: cover;
+  border: 0.1vw solid white;
+}
+
+.DiceRoller__button--gritty--active {
+  background-image: url(Gritty.png);
+  background-size: contain;
+  border: none;
+}
+
+.DiceRoller__button--advantage {
+  background-color: white;
+  background-image: url(Progress-inactive.png);
+  background-size: cover;
+  border: 0.1vw solid white;
+}
+
+.DiceRoller__button--advantage--active {
+  background-image: url(Progress.png);
+  background-size: contain;
+  border: none;
+}
+
+.DiceRoller__button--danger {
+  background-color: white;
+  background-image: url(Danger-inactive.png);
+  background-size: cover;
+  border: 0.1vw solid white;
+}
+
+.DiceRoller__button--danger--active {
+  background-image: url(Danger.png);
+  background-size: contain;
+  border: none;
+}
+
+#Results {
+  height: 2em;
+  font-size: 1em;
+}
