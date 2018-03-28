@@ -1,8 +1,8 @@
 {
-    "short_name" : "d6 Roller",
-    "name" : "d6 System Dice Roller",
+    "short_name" : "Bulletproof Roller",
+    "name" : "America the Bulletproof Roller",
     "display" : "standalone",
-    "start_url" : "/d6-system-roller/d6-system-roller.html",
+    "start_url" : "/america-bulletproof-roller/index.html",
     "theme_color" : "#C0D890",
     "background_color": "#2196F3",
 

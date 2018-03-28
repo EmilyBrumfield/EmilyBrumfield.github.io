@@ -36,7 +36,30 @@ function handleInstructionClick() {  //toggles instructions
 function handleDiceClick(numDice, dieType) {
   var currentDie = ""; //specifies which die button to change
   var diceStyle = "DiceRoller__button--" + dieType + "--active";
-    
+  var currentPool = 0; //used to test whether the user is trying to clear the dice with the alternate method of clicking the first die when active
+
+  if(numDice === 1){
+    switch(dieType) {
+      case "absurd":
+        currentPool = absurdDicePool;
+        break;
+      case "gritty":
+        currentPool = grittyDicePool;
+        break;
+      case "advantage":
+        currentPool = advantageDicePool;
+        break;
+      case "danger":
+        currentPool = dangerDicePool;
+        break;
+      default:
+        alert("Error: Invalid die type.")
+    }
+    if(currentPool === 1){
+      numDice = 0;
+    }
+  }
+
   //Changes which dice are highlighted as being part of the pool
   for(var i = 1; i <= numDice; i++) {
     currentDie = dieType + i;

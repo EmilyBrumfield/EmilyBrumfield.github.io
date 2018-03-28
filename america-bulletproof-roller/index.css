@@ -52,7 +52,6 @@ body {
   background-image: url(Clear.png);
   background-size: cover;
   border: 0.1vw dotted black;
-  /*This is a blank image. But it could be replaced by an icon later.*/
 }
 
 .DiceRoller__button--absurd {
