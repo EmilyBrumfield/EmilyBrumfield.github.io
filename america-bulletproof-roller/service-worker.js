@@ -1,4 +1,4 @@
-var version = 'v2';
+var version = 'v3';
 
 self.addEventListener("install", function(event) {  //this portion shouldn't delete anything from cache since it might be in use
     
