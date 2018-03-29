@@ -1,3 +1,29 @@
+/* Portrait */
+@media screen and (orientation:portrait) {
+   
+  .DiceRoller__div {
+    display: inline;
+    margin-right: 2vw;
+
+  }
+
+  .DiceRoller__div:after {
+    content:"\a";
+    white-space: pre;
+}
+
+}
+/* Landscape */
+@media screen and (orientation:landscape) {
+  
+  .DiceRoller__div {
+    display: inline;
+    margin-right: 2vw;
+
+  }
+
+}
+
 html {
   height: 98%;
   width: 99%;
@@ -27,11 +53,6 @@ body {
   width: 27vw;
 }
 
-.DiceRoller__div {
-  display: inline;
-  margin-right: 2vw;
-}
-
 .DiceRoller__button {
   font-size: 2vw;
   height: 6vw;
@@ -51,7 +72,7 @@ body {
   background-color: white;
   background-image: url(Clear.png);
   background-size: cover;
-  border: 0.1vw dotted black;
+  border: 0.1vw solid white;
 }
 
 .DiceRoller__button--absurd {
@@ -76,8 +97,8 @@ body {
 
 .DiceRoller__button--gritty--active {
   background-image: url(Gritty.png);
-  background-size: contain;
-  border: none;
+  background-size: cover;
+  
 }
 
 .DiceRoller__button--advantage {
@@ -89,8 +110,8 @@ body {
 
 .DiceRoller__button--advantage--active {
   background-image: url(Progress.png);
-  background-size: contain;
-  border: none;
+  background-size: cover;
+  
 }
 
 .DiceRoller__button--danger {
@@ -102,8 +123,8 @@ body {
 
 .DiceRoller__button--danger--active {
   background-image: url(Danger.png);
-  background-size: contain;
-  border: none;
+  background-size: cover;
+  
 }
 
 #Results {
