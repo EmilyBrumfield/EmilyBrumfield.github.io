@@ -3,3 +3,4 @@ Simple interface, single clicks. These specialized rollers are fast, friendly, a
 <br />
 <br /><a href="/d6-system-roller/d6-system-roller.html">D6 System Roller</a>
 <br /><a href="/anarchy-roller/anarchy-roller.html">Shadowrun Anarchy Roller</a>
+<br /><a href="/exalted-roller/index.html">Exalted 3e Roller</a>
